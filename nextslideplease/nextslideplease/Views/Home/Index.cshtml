@@ -1,21 +1,18 @@
-﻿<div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
+﻿<div class="jumbotron">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Name</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="userInput">
     </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-2">
-            <input type="button" id="previousButton" value="Previous Slide" />
-        </div>
-        <div class="col-6">
-            <input type="button" id="nextButton" value="Next Slide" />
-        </div>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" id="previousButton" class="btn btn-danger">Previous Slide</button>
+        <button type="button" id="nextButton" class="btn btn-success">Next Slide</button>
     </div>
 </div>
 
-<div class="row">
+<div class="jumbotron">
     <div class="col-4">
         <h1 id="previousslide">Previous Slide</h1>
     </div>
@@ -23,10 +20,8 @@
         <h1 id="nextslide">Next Slide</h1>
     </div>
 </div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
+<div class="jumbotron">
+    <ul class="list-group list-group-flush" id="messagesList" />
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
