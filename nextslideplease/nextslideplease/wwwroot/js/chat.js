@@ -10,19 +10,28 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function addTrace(msg) {
+    let li = document.createElement('li');
+    li.textContent = msg;
+    document.getElementById("messagesList").appendChild(li);
+}
 connection.on("ReceiveMessage", async function (user, message) {
+    var msg = user;
     if (message === "next") {
+        msg = msg + ": next slide please";
         document.getElementById("nextslide").style.backgroundColor = 'blue';
-        document.getElementById("nextslide").innerText = user + ": next slide please";
-        await sleep(1000);
-        document.getElementById("nextslide").style.backgroundColor = 'white';
+        document.getElementById("nextslide").innerText = msg;
     } else if (message === "previous") {
+        msg = msg + ": previous slide please";
         document.getElementById("previousslide").style.backgroundColor = 'red';
-        document.getElementById("previousslide").innerText = user + ": previous slide please";
-        await sleep(1000);
-        document.getElementById("previousslide").style.backgroundColor = 'white';
+        document.getElementById("previousslide").innerText = msg;       
     }
-
+    addTrace(msg);
+    await sleep(1000);
+    document.getElementById("previousslide").style.backgroundColor = 'white';
+    document.getElementById("nextslide").style.backgroundColor = 'white';
+    document.getElementById("previousslide").innerText = "previous slide please";
+    document.getElementById("nextslide").innerText = "next slide please";
 });
 
 connection.start().then(function () {
