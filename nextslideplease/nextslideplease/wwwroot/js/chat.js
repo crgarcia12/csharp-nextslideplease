@@ -12,26 +12,41 @@ function sleep(ms) {
 
 function addTrace(msg) {
     let li = document.createElement('li');
-    li.textContent = msg;
-    document.getElementById("messagesList").appendChild(li);
+    li.textContent = new Date().toLocaleTimeString() + " - " + msg;
+    document.getElementById("messagesList").prepend(li);
 }
+
+function TurnLeftOn(msg) {
+    document.getElementById("arrowleft").style.borderRight = "60px solid #f0ad4e";
+    document.getElementById("previousslide").innerText = msg;   
+    document.getElementById("previousslide").style.color = "red";
+}
+
+function TurnRightOn(msg) {
+    document.getElementById("arrowright").style.borderLeft = "60px solid green";
+    document.getElementById("nextslide").innerText = msg;
+    document.getElementById("nextslide").style.color = "green";
+}
+
+function TurnOff() {
+    document.getElementById("arrowleft").style.borderRight = "60px solid black";
+    document.getElementById("arrowright").style.borderLeft = "60px solid black";
+    document.getElementById("previousslide").style.color = "black";
+    document.getElementById("nextslide").style.color = "black";
+}
+
 connection.on("ReceiveMessage", async function (user, message) {
     var msg = user;
     if (message === "next") {
         msg = msg + ": next slide please";
-        document.getElementById("nextslide").style.backgroundColor = 'blue';
-        document.getElementById("nextslide").innerText = msg;
+        TurnRightOn(msg);   
     } else if (message === "previous") {
         msg = msg + ": previous slide please";
-        document.getElementById("previousslide").style.backgroundColor = 'red';
-        document.getElementById("previousslide").innerText = msg;       
+        TurnLeftOn(msg);    
     }
     addTrace(msg);
     await sleep(1000);
-    document.getElementById("previousslide").style.backgroundColor = 'white';
-    document.getElementById("nextslide").style.backgroundColor = 'white';
-    document.getElementById("previousslide").innerText = "previous slide please";
-    document.getElementById("nextslide").innerText = "next slide please";
+    TurnOff();
 });
 
 connection.start().then(function () {

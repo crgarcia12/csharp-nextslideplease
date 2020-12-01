@@ -1,27 +1,46 @@
-﻿<div class="jumbotron">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Name</span>
+﻿<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="jumbotron">
+            <h1>Next Slide Please</h1>
+            <div class="row mt-2">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="userInput">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <button type="button" id="previousButton" class="btn btn-danger">Previous Slide</button>
+                </div>
+                <div class="col">
+                    <button type="button" id="nextButton" class="btn btn-success">Next Slide</button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <div class="arrowleft" id="arrowleft"></div>
+                </div>
+                <div class="col">
+                    <div class="arrowright" id="arrowright"></div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <p id="previousslide">Previous Slide</p>
+                </div>
+                <div class="col">
+                    <p id="nextslide">Next Slide</p>
+                </div>
+            </div>
         </div>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="userInput">
-    </div>
-
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" id="previousButton" class="btn btn-danger">Previous Slide</button>
-        <button type="button" id="nextButton" class="btn btn-success">Next Slide</button>
-    </div>
-</div>
-
-<div class="jumbotron">
-    <div class="col-4">
-        <h1 id="previousslide">Previous Slide</h1>
-    </div>
-    <div class="col-2">
-        <h1 id="nextslide">Next Slide</h1>
     </div>
 </div>
 <div class="jumbotron">
-    <ul class="list-group list-group-flush" id="messagesList" />
+    <div class="row mt-2">
+        <ul class="list-group list-group-flush" id="messagesList" />
+    </div>
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
